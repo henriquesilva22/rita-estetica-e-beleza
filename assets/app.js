@@ -18,7 +18,15 @@
     { id: 'cabelos', nome: 'Cabelos', from: 'R$ 80', partir: true, img: 'img/cabelo-02.jpg',
       desc: 'Cortes, cor e tratamentos pensados para o tipo e a condição dos seus fios.',
       msg: 'Olá! Gostaria de solicitar atendimento para cabelos.',
-      items: [['Corte', 'a partir de R$ 80,00'], ['Tintura', 'R$ 150,00 a R$ 180,00'], ['Luzes', 'a partir de R$ 200,00'], ['Progressiva', 'a partir de R$ 120,00'], ['Botox capilar', 'a partir de R$ 130,00'], ['Hidratação com queratina', 'a partir de R$ 130,00']] },
+      // [serviço, valor, mensagem do WhatsApp (opcional)]
+      items: [
+        ['Corte', 'a partir de R$ 80,00', 'Olá! Gostaria de agendar um corte de cabelo. Poderia me informar os horários disponíveis?'],
+        ['Tintura', 'R$ 150,00 a R$ 180,00', 'Olá! Tenho interesse em fazer uma tintura. Gostaria de saber mais sobre o procedimento e agendar um horário.'],
+        ['Luzes', 'a partir de R$ 200,00', 'Olá! Gostaria de fazer luzes no cabelo. Podemos conversar sobre uma avaliação e os detalhes do procedimento?'],
+        ['Progressiva', 'a partir de R$ 120,00', 'Olá! Tenho interesse em fazer progressiva. Gostaria de saber sobre a avaliação e a disponibilidade para atendimento.'],
+        ['Botox capilar', 'a partir de R$ 130,00', 'Olá! Gostaria de fazer botox capilar. Poderia me passar mais informações sobre o procedimento?'],
+        ['Hidratação com queratina', 'a partir de R$ 130,00', 'Olá! Tenho interesse em fazer hidratação com queratina. Gostaria de saber mais e verificar os horários disponíveis.']
+      ] },
     { id: 'unhas', nome: 'Unhas', from: 'R$ 80', partir: false, img: 'img/unhas-01.jpg',
       desc: 'Mãos e pés com acabamento delicado e cuidado em cada detalhe.',
       msg: 'Olá! Gostaria de solicitar atendimento para unhas (pé e mão).',
@@ -132,8 +140,10 @@
     cards.innerHTML = CATS.map(function (c) {
       return '<article class="card reveal"><figure><img src="' + c.img + '" alt="" width="800" height="600" loading="lazy" decoding="async"></figure>' +
         '<div class="b"><h3>' + c.nome + '</h3><p>' + c.desc + '</p><ul class="tags">' +
-        c.items.map(function (i) { return '<li>' + i[0] + '</li>'; }).join('') + '</ul>' +
-        '<div class="from"><div><small>' + (c.partir ? 'A partir de' : 'Valor') + '</small><strong>' + c.from + '</strong></div>' +
+        c.items.map(function (i) {
+          return '<li>' + (i[2] ? '<a target="_blank" rel="noopener" href="' + wa(i[2]) + '" aria-label="Agendar ' + i[0] + ' pelo WhatsApp">' + icon('wa') + i[0] + '</a>' : i[0]) + '</li>';
+        }).join('') + '</ul>' +
+        '<div class="from"><a class="link" href="#precos">Ver valores</a>' +
         '<a class="btn ghost" target="_blank" rel="noopener" href="' + wa(c.msg) + '">Agendar</a></div></div></article>';
     }).join('');
     var dots = $('#dots');
@@ -156,7 +166,10 @@
     }).join('');
     panels.innerHTML = CATS.map(function (c, k) {
       return '<div class="price reveal" role="tabpanel" id="p-' + c.id + '" aria-labelledby="t-' + c.id + '"' + (k ? ' hidden' : '') + '><h3>' + c.nome + '</h3><ul>' +
-        c.items.map(function (i) { return '<li><span>' + i[0] + '</span><i></i><b>' + i[1] + '</b></li>'; }).join('') +
+        c.items.map(function (i) {
+          return '<li><span>' + i[0] + '</span><i></i><b>' + i[1] + '</b>' +
+            (i[2] ? '<a class="wa-item" target="_blank" rel="noopener" href="' + wa(i[2]) + '" aria-label="Agendar ' + i[0] + ' pelo WhatsApp">' + icon('wa') + '</a>' : '') + '</li>';
+        }).join('') +
         '</ul><a class="btn ghost sm" target="_blank" rel="noopener" href="' + wa(c.msg) + '">' + icon('wa') + 'Agendar ' + c.nome.split(' ')[0].toLowerCase() + '</a></div>';
     }).join('');
     tabs.addEventListener('click', function (e) {

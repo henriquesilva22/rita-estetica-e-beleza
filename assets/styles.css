@@ -132,6 +132,12 @@ h2 em{font-style:italic;color:var(--accent)}
 .tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
 .tags li{font-size:12.5px;color:var(--accent);background:#f9eef0;padding:4px 10px;border-radius:99px}
 .from{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.tags a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;min-height:28px}
+.tags li:has(a){background:#e9f6ee;transition:background .2s}.tags li:has(a) a{color:var(--wa-dark)}.tags li:has(a):hover{background:#d3eedd}
+.from .link{align-self:center;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);text-underline-offset:4px}
+.price li{align-items:center}
+.wa-item{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--wa);background:#e9f6ee;transition:background .2s,color .2s}
+.wa-item:hover{background:var(--wa);color:#fff}
 .from small{display:block;font:500 10.5px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 .from strong{font:500 26px/1 var(--display)}
 .from .btn{min-height:44px;padding:0 16px;font-size:11.5px;letter-spacing:.08em}
