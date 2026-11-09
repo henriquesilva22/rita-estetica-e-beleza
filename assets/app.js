@@ -31,7 +31,7 @@
       desc: 'Mãos e pés com acabamento delicado e cuidado em cada detalhe.',
       msg: 'Olá! Gostaria de solicitar atendimento para unhas (pé e mão).',
       items: [['Pé e mão', 'R$ 80,00']] },
-    { id: 'sobrancelhas', nome: 'Sobrancelhas', from: 'R$ 30', partir: true, img: 'img/sobrancelha-02.jpg',
+    { id: 'sobrancelhas', nome: 'Sobrancelhas', from: 'R$ 30', partir: true, img: 'img/sobrancelha-01.jpg',
       desc: 'Design que valoriza o seu olhar, do desenho com henna à sobrancelha definitiva.',
       msg: 'Olá! Gostaria de solicitar atendimento para sobrancelhas.',
       items: [['Design com henna', 'R$ 60,00'], ['Remoção simples', 'R$ 30,00'], ['Sobrancelha definitiva', 'a partir de R$ 200,00']] },
@@ -51,7 +51,6 @@
   var GAL = [
     ['cabelo-01', 'cabelos', 'Cabelo longo ondulado com mechas loiras', 708, 946],
     ['cabelo-02', 'cabelos', 'Corte chanel em camadas com luzes', 720, 921],
-    ['sobrancelha-02', 'sobrancelhas', 'Sobrancelhas desenhadas', 1400, 1050],
     ['cabelo-03', 'cabelos', 'Cabelo longo com luzes e pontas modeladas', 701, 875],
     ['unhas-01', 'unhas', 'Unhas com acabamento francesinha', 632, 702],
     ['cabelo-06', 'cabelos', 'Cabelo com luzes, dois ângulos', 1400, 847],
