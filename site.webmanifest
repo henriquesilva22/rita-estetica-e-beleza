@@ -1,0 +1,9 @@
+{
+  "name": "Rita Beleza e Estética",
+  "short_name": "Rita Beleza",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf7f3",
+  "theme_color": "#9c4a5e",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }, { "src": "/logos/logo.png", "sizes": "420x161", "type": "image/png" }]
+}
