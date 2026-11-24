@@ -1,7 +1,7 @@
 {
   "name": "Rita Beleza e Estética",
-  "short_name": "Rita Beleza",
-  "start_url": "/agendar",
+  "short_name": "Rita",
+  "start_url": "/agendar?app=1",
   "display": "standalone",
   "background_color": "#fbf7f3",
   "theme_color": "#9c4a5e",
@@ -26,5 +26,8 @@
   "id": "/agendar",
   "scope": "/",
   "lang": "pt-BR",
-  "description": "Agende seu horário ou peça um orçamento na Rita Beleza e Estética."
+  "description": "Agende seu horário ou peça um orçamento na Rita Beleza e Estética.",
+  "display_override": [
+    "standalone"
+  ]
 }

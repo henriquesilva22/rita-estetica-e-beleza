@@ -72,6 +72,7 @@
     x: '<path d="M18 6 6 18M6 6l12 12"/>',
     left: '<path d="m15 18-6-6 6-6"/>',
     right: '<path d="m9 18 6-6-6-6"/>',
+    baixar: '<path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/>',
     up: '<path d="m18 15-6-6-6 6"/>',
     arrow: '<path d="M5 12h14m-7-7 7 7-7 7"/>',
     check: '<path d="M20 6 9 17l-5-5"/>',

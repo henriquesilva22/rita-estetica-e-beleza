@@ -343,3 +343,18 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 .chamada .btn{background:#fff;border-color:#fff;color:var(--accent)}.chamada .btn:hover{background:#f3dcc0;border-color:#f3dcc0;color:var(--wine)}
 
 @media(prefers-reduced-motion:reduce){.faixa div{animation:none}}
+
+/* ---------- celular: aplicativo em primeiro lugar ---------- */
+.dock .w{background:var(--accent)}
+.dock .t{flex:none;padding:0;border-radius:50%;display:grid;place-items:center;height:52px;cursor:pointer}
+.dock .t.wa{background:var(--wa);border-color:var(--wa);color:#fff}
+.hero-wa{margin:18px 0 0;font-size:15px}.hero-wa a{display:inline-flex;align-items:center;gap:8px;color:var(--wa-dark);text-underline-offset:4px;min-height:44px}
+.instalar-ajuda{margin:16px auto 0;max-width:460px;padding:14px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:var(--ink);font-size:15px}
+.app .instalar-ajuda{opacity:1}
+@media(min-width:960px){.so-celular{display:none}}
+@media(max-width:959px){.hero .principal{background:transparent;color:var(--accent)}}
+.convite{position:fixed;z-index:70;left:14px;right:14px;bottom:calc(88px + env(safe-area-inset-bottom));max-width:420px;margin:0 auto;padding:20px;background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
+.convite[hidden]{display:none}
+.convite b{font:600 24px/1.1 var(--display)}.convite p{margin:6px 0 16px;color:var(--ink-soft);font-size:15px}
+.convite div{display:flex;gap:8px;flex-wrap:wrap}.convite .btn{flex:1 1 auto;padding:0 14px;letter-spacing:.06em}
+@media(min-width:960px){.convite{left:auto;right:28px;bottom:28px;margin:0}}

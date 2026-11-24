@@ -50,7 +50,6 @@
 
   /* ---------- instalar o aplicativo ---------- */
   var installPrompt = null;
-  var help = document.getElementById('instalarAjuda');
   window.addEventListener('beforeinstallprompt', function (e) {
     e.preventDefault();
     installPrompt = e;
@@ -62,11 +61,15 @@
         installPrompt = null;
         return;
       }
+      // a ajuda mais próxima do botão; o da barra usa a da capa
+      var section = b.closest('section');
+      var help = (section && section.querySelector('.instalar-ajuda')) || document.querySelector('.instalar-ajuda');
       if (!help) return;
       var ios = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       var installed = matchMedia('(display-mode: standalone)').matches;
       help.hidden = false;
+      if (!section) help.scrollIntoView({ behavior: 'smooth', block: 'center' });
       help.textContent = installed
         ? 'O aplicativo já está instalado neste aparelho.'
         : ios

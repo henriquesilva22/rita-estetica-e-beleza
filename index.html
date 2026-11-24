@@ -2,6 +2,10 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<script>
+// Dentro do aplicativo instalado não existe o site: vai para o agendamento
+if (navigator.standalone === true || ['standalone', 'fullscreen', 'minimal-ui'].some(function (m) { return matchMedia('(display-mode: ' + m + ')').matches; })) location.replace('/agendar?app=1');
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Rita Beleza e Estética | Salão em Itapira, SP</title>
 <meta name="description" content="Rita Beleza e Estética em Itapira, SP: cabelos, unhas, sobrancelhas, estética e maquiagem. Veja os valores, trabalhos reais e agende online ou pelo WhatsApp. Terça a sábado, 09h às 18h.">
@@ -21,10 +25,11 @@
 <link rel="preload" as="image" href="img/cabelo-02.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=5">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BeautySalon","name":"Rita Beleza e Estética","image":"/img/cabelo-02.jpg","telephone":["+5519991668269","+5519999988530"],"priceRange":"R$ 20 - R$ 200","sameAs":["https://www.facebook.com/p/Rita-Beleza-Est%C3%A9tica-100029109558790/"],"address":{"@type":"PostalAddress","streetAddress":"Avenida Rio Branco, 631","addressLocality":"Itapira","addressRegion":"SP","addressCountry":"BR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"18:00"}]}</script>
-<script defer src="assets/app.js"></script>
-<script defer src="/assets/topo.js"></script>
+<script defer src="assets/app.js?v=5"></script>
+<script defer src="/assets/topo.js?v=5"></script>
+<script defer src="/assets/push.js?v=5"></script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -70,10 +75,12 @@
      <h1>Sua beleza, cuidada com <em>delicadeza</em></h1>
      <p class="sub">Cabelo, unhas, sobrancelhas, estética e maquiagem em um só lugar, com atendimento individual e preço claro.</p>
      <div class="cta">
-      <a class="btn" href="/agendar">Agendar online</a>
-      <a class="btn wa" data-wa="Olá! Vim pelo site e gostaria de agendar um horário." data-i="wa"> WhatsApp</a>
+      <button class="btn so-celular" type="button" data-instalar data-i="baixar"> Instalar o aplicativo</button>
+      <a class="btn principal" href="/agendar">Agendar online</a>
       <a class="btn ghost" href="#precos">Ver valores</a>
      </div>
+     <p class="instalar-ajuda" id="instalarAjuda" role="status" hidden></p>
+     <p class="hero-wa"><a data-wa="Olá! Vim pelo site e gostaria de agendar um horário." data-i="wa"> Prefere o WhatsApp? Fale com a Rita</a></p>
      <div class="facts">
       <div><b>4</b><span>Áreas de cuidado</span></div>
       <div><b>Ter–Sáb</b><span>09h às 18h</span></div>
@@ -161,7 +168,7 @@
   <div class="reveal"><div class="eyebrow">Agendamento online</div><h2>Seu salão favorito na palma da mão</h2>
    <p>Consulte os serviços, peça um orçamento e agende seu atendimento sem sair de casa. Instale no celular em poucos toques.</p>
    <div class="store"><button class="btn" type="button" data-instalar>Instalar aplicativo</button><a class="btn ghost" href="/agendar">Usar no navegador</a></div>
-   <p id="instalarAjuda" role="status" hidden></p>
+   <p class="instalar-ajuda" role="status" hidden></p>
   </div>
   <div class="reveal">
    <div class="phone" role="img" aria-label="Tela ilustrativa do agendamento"><div class="scr">
@@ -202,7 +209,8 @@
  </div>
 </footer>
 
-<div class="dock"><a class="w" data-wa="Olá! Vim pelo site e gostaria de agendar um horário." data-i="wa"> Agendar no WhatsApp</a><a class="t" data-tel aria-label="Ligar para a Rita" data-i="phone"></a></div>
+<div class="dock"><a class="w" href="/agendar">Agendar pelo navegador</a><button class="t" type="button" data-instalar aria-label="Instalar o aplicativo" data-i="baixar"></button><a class="t wa" data-wa="Olá! Vim pelo site e gostaria de agendar um horário." aria-label="Agendar pelo WhatsApp" data-i="wa"></a></div>
+<aside class="convite" id="convite" role="dialog" aria-label="Permitir notificações" hidden><b>Receba avisos da Rita</b><p>Saiba na hora quando seu orçamento ou horário for respondido.</p><div><button class="btn sm" type="button" data-sim>Permitir notificações</button><button class="btn ghost sm" type="button" data-nao>Agora não</button></div></aside>
 <button class="to-top" aria-label="Voltar ao topo" data-i="up"></button>
 </body>
 </html>
