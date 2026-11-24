@@ -301,7 +301,45 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 }
 
 /* ---------- conta e agendamento ---------- */
-.entrar{text-decoration:none;font:500 13px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding:14px 10px}
-.entrar:hover{color:var(--accent-dark)}
+.bar .btn.sempre{display:inline-flex}
+@media(max-width:400px){.bar .btn.sempre{padding:0 14px;letter-spacing:.06em}}
 .price .serv{text-decoration:none}.price .serv:hover{color:var(--accent);text-decoration:underline}
 .store .btn.ghost{color:#fff;border-color:rgba(255,255,255,.5)}.store .btn.ghost:hover{background:#fff;color:var(--accent)}
+
+/* ---------- visual ---------- */
+.hero{background:radial-gradient(60% 70% at 12% 10%,rgba(179,142,93,.13),transparent 70%),linear-gradient(180deg,#fbf7f3,#f6ece5)}
+.visual .mini{position:absolute;right:-9%;top:9%;width:36%;aspect-ratio:1;object-fit:cover;border-radius:50%;border:6px solid var(--bg);box-shadow:var(--shadow)}
+@media(max-width:639px){.visual .mini{right:-12%;width:38%}}
+.faixa{background:var(--wine);color:#f3dcc0;overflow:hidden;padding:18px 0}
+.faixa div{display:flex;align-items:center;gap:30px;width:max-content;animation:faixa 38s linear infinite}
+.faixa span{font:italic 500 25px/1 var(--display);white-space:nowrap}
+.faixa i{width:7px;height:7px;border-radius:50%;background:var(--rose);flex:none}
+@keyframes faixa{to{transform:translateX(calc(-50% - 15px))}}
+
+.card figure{position:relative;aspect-ratio:4/4.4}
+.card figure:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(58,24,35,.72))}
+.card .b{position:relative;padding-top:20px}
+.card h3{position:absolute;left:22px;right:22px;bottom:calc(100% + 16px);color:#fff;font-size:32px}
+.tags li:has(a),.tags li{background:#f9eef0}.tags li:has(a) a{color:var(--accent)}.tags li:has(a):hover{background:#f0dbe0}
+
+.como{background:var(--surface)}
+.como ol{list-style:none;margin:48px 0 0;padding:0;display:grid;gap:18px;counter-reset:p}
+.como li{counter-increment:p;position:relative;padding:30px 28px 30px 96px;border-radius:var(--radius-lg);background:linear-gradient(135deg,#fbf7f3,#f3e8e0)}
+.como li:before{content:counter(p);position:absolute;left:28px;top:24px;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font:italic 500 28px/1 var(--display)}
+.como h3{font-size:27px;margin-bottom:8px}.como li p{color:var(--ink-soft);font-size:15.5px}
+.como .acao{text-align:center;margin-top:36px}
+@media(min-width:960px){.como ol{grid-template-columns:repeat(3,1fr);gap:24px}.como li{padding:104px 30px 34px}.como li:before{left:30px;top:32px;width:56px;height:56px;font-size:32px}}
+
+.colagem{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:1fr 1fr;gap:14px;width:min(100%,480px);aspect-ratio:1/1.06;margin:0 auto}
+.colagem img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius)}
+.colagem img:first-child{grid-row:span 2;border-radius:999px 999px var(--radius) var(--radius)}
+.colagem img:nth-child(2){border-radius:var(--radius) 90px var(--radius) var(--radius)}
+
+.chamada{position:relative;padding:clamp(96px,14vw,170px) 0;color:#fff;text-align:center;overflow:hidden}
+.chamada>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.chamada:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(79,35,49,.94),rgba(79,35,49,.68))}
+.chamada .wrap{position:relative;z-index:1}
+.chamada h2 em{color:#f0b9c4}.chamada p{max-width:440px;margin:16px auto 28px;font-size:18px;color:#fbeff1}
+.chamada .btn{background:#fff;border-color:#fff;color:var(--accent)}.chamada .btn:hover{background:#f3dcc0;border-color:#f3dcc0;color:var(--wine)}
+
+@media(prefers-reduced-motion:reduce){.faixa div{animation:none}}

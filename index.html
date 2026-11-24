@@ -35,7 +35,7 @@
    <a href="#servicos">Serviços</a><a href="#precos">Valores</a><a href="#galeria">Galeria</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
   </nav>
   <div class="bar-actions">
-   <a class="entrar" data-conta href="/agendar?entrar=1">Entrar</a>
+   <a class="btn ghost sm sempre" data-conta href="/agendar?entrar=1">Entrar</a>
    <a class="btn sm" href="/agendar">Agendar</a>
    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="drawer"></button>
   </div>
@@ -81,6 +81,7 @@
     </div>
     <div class="visual">
      <img src="img/cabelo-02.jpg" alt="Corte chanel em camadas com luzes, trabalho real da Rita" width="720" height="921" fetchpriority="high">
+     <img class="mini" src="img/unhas-01.jpg" alt="Unhas com acabamento francesinha" width="632" height="702" loading="lazy">
      <div class="badge"><span data-i="star"></span><div><b>Trabalhos reais</b>feitos no salão</div></div>
     </div>
    </div>
@@ -90,12 +91,26 @@
   </div>
  </section>
 
+ <!-- FAIXA -->
+ <div class="faixa" aria-hidden="true"><div><span>Cabelos</span><i></i><span>Unhas</span><i></i><span>Sobrancelhas</span><i></i><span>Estética</span><i></i><span>Maquiagem</span><i></i><span>Depilação</span><i></i><span>Cabelos</span><i></i><span>Unhas</span><i></i><span>Sobrancelhas</span><i></i><span>Estética</span><i></i><span>Maquiagem</span><i></i><span>Depilação</span><i></i></div></div>
+
  <!-- SERVIÇOS -->
  <section id="servicos"><div class="wrap">
   <div class="reveal"><div class="eyebrow">Serviços</div><h2>O que fazemos <em>por você</em></h2>
   <p class="lead">Quatro áreas de cuidado, com atendimento individual e preço claro.</p></div>
   <div class="cards" id="cards"></div>
   <div class="dots" id="dots"></div>
+ </div></section>
+
+ <!-- COMO FUNCIONA -->
+ <section class="como"><div class="wrap">
+  <div class="reveal"><div class="eyebrow">Agendamento online</div><h2>Três passos até <em>o seu horário</em></h2></div>
+  <ol>
+   <li class="reveal"><h3>Escolha o serviço</h3><p>Veja fotos, duração e valores de cada atendimento.</p></li>
+   <li class="reveal"><h3>Peça seu horário</h3><p>Selecione o dia ou envie suas fotos para receber um orçamento.</p></li>
+   <li class="reveal"><h3>Receba a confirmação</h3><p>A Rita confirma e você recebe um lembrete antes do atendimento.</p></li>
+  </ol>
+  <p class="acao reveal"><a class="btn" href="/agendar">Começar agora</a></p>
  </div></section>
 
  <!-- VALORES -->
@@ -127,7 +142,7 @@
 
  <!-- SOBRE -->
  <section id="sobre"><div class="wrap sobre">
-  <div class="ph reveal">Espaço para a foto da Rita</div>
+  <div class="colagem reveal"><img src="img/cabelo-03.jpg" alt="Cabelo longo com luzes e pontas modeladas" width="701" height="875" loading="lazy"><img src="img/cabelo-07.jpg" alt="Corte curto repicado com luzes" width="655" height="626" loading="lazy"><img src="img/estetica-01.jpg" alt="Maquiagem, unhas e cuidados de beleza" width="1400" height="1036" loading="lazy"></div>
   <div class="reveal">
    <div class="eyebrow left">Sobre</div><h2>Conheça a <em>Rita</em></h2>
    <p style="margin-top:20px">A Rita Beleza e Estética reúne cabelos, unhas, sobrancelhas, estética e maquiagem em um só lugar.</p>
@@ -156,6 +171,9 @@
    </div></div>
   </div>
  </div></section>
+
+ <!-- CHAMADA -->
+ <section class="chamada"><img src="img/cabelo-06.jpg" alt="" width="1400" height="847" loading="lazy"><div class="wrap reveal"><h2>Tire um tempo <em>para você</em></h2><p>Escolha o melhor dia e deixe o resto com a gente.</p><a class="btn" href="/agendar">Agendar online</a></div></section>
 
  <!-- CONTATO -->
  <section class="contato" id="contato"><div class="wrap">

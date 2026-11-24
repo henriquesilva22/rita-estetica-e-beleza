@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sua conta | Rita Beleza e Estética</title>
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#fbf7f3">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+<style>
+ body{padding:0;min-height:100vh;display:flex;flex-direction:column}
+ .conta{flex:1;display:grid;place-items:center;padding:32px 20px}
+ .conta>div{width:min(440px,100%);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px 28px;text-align:center;box-shadow:var(--shadow)}
+ .conta h1{font-size:34px;margin-bottom:12px}
+ .conta p{color:var(--ink-soft)}
+ .conta form{display:grid;gap:14px;margin-top:20px;text-align:left}
+ .conta label{font-size:14px;color:var(--ink-soft);display:grid;gap:6px}
+ .conta input{font:inherit;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);width:100%}
+ .conta .btn{width:100%;margin-top:8px}
+ .conta [role=status]{margin-top:16px;min-height:1.6em}
+ .conta [hidden]{display:none}
+</style>
+<script defer src="/assets/conta.js"></script>
+</head>
+<body>
+<header class="header"><div class="wrap bar">
+ <a class="logo" href="/" aria-label="Rita Beleza e Estética, início"><img src="/logos/logo.png" alt="Rita Beleza e Estética" width="420" height="161"></a>
+ <a class="btn ghost sm sempre" href="/">Voltar ao site</a>
+</div></header>
+<main class="conta"><div>
+ <h1 id="titulo">Sua conta</h1>
+ <p id="texto">Abra esta página pelo link do e-mail.</p>
+ <form id="senha" hidden>
+  <label>Nova senha<input id="s1" type="password" minlength="6" required autocomplete="new-password"></label>
+  <label>Repita a senha<input id="s2" type="password" minlength="6" required autocomplete="new-password"></label>
+  <button class="btn" type="submit">Salvar nova senha</button>
+ </form>
+ <button class="btn" id="confirmar" type="button" hidden>Confirmar meu e-mail</button>
+ <a class="btn" id="seguir" href="/agendar?entrar=1" hidden>Entrar na minha conta</a>
+ <p id="aviso" role="status"></p>
+</div></main>
+</body>
+</html>
