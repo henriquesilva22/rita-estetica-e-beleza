@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="assets/styles.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BeautySalon","name":"Rita Beleza e Estética","image":"/img/cabelo-02.jpg","telephone":["+5519991668269","+5519999988530"],"priceRange":"R$ 20 - R$ 200","sameAs":["https://www.facebook.com/p/Rita-Beleza-Est%C3%A9tica-100029109558790/"],"address":{"@type":"PostalAddress","streetAddress":"Avenida Rio Branco, 631","addressLocality":"Itapira","addressRegion":"SP","addressCountry":"BR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"18:00"}]}</script>
 <script defer src="assets/app.js"></script>
+<script defer src="/assets/topo.js"></script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -34,6 +35,7 @@
    <a href="#servicos">Serviços</a><a href="#precos">Valores</a><a href="#galeria">Galeria</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
   </nav>
   <div class="bar-actions">
+   <a class="entrar" data-conta href="/agendar?entrar=1">Entrar</a>
    <a class="btn sm" href="/agendar">Agendar</a>
    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="drawer"></button>
   </div>
@@ -50,6 +52,7 @@
  </nav>
  <div class="foot">
   <a class="btn" href="/agendar">Agendar online</a>
+  <a class="btn ghost" data-conta href="/agendar?entrar=1">Entrar</a>
   <a class="btn wa" data-wa="geral" data-i="wa"> Falar pelo WhatsApp</a>
   <span class="status" data-status></span>
   <span>Avenida Rio Branco, 631 · Itapira, SP</span>
@@ -119,7 +122,7 @@
   <div class="reveal"><div class="eyebrow">Avaliação capilar</div><h2>Cada cabelo, <em>um orçamento</em></h2>
   <p class="lead">Luzes, tintura e progressiva mudam de valor conforme as características dos fios. Por isso a Rita avalia o seu cabelo antes de passar o preço final.</p></div>
   <div class="steps" id="steps"></div>
-  <div class="cta reveal"><p>Envie fotos do seu cabelo e receba um orçamento personalizado.</p><a class="btn" href="/agendar">Pedir orçamento online</a></div>
+  <div class="cta reveal"><p>Envie fotos do seu cabelo e receba um orçamento personalizado.</p><a class="btn" href="/agendar?categoria=cabelos">Pedir orçamento online</a></div>
  </div></section>
 
  <!-- SOBRE -->
@@ -140,9 +143,9 @@
  <!-- APP -->
  <section class="app"><div class="wrap in">
   <div class="reveal"><div class="eyebrow">Agendamento online</div><h2>Seu salão favorito na palma da mão</h2>
-   <p>Consulte os serviços, peça um orçamento e agende seu atendimento sem sair de casa. O aplicativo para celular chega em breve.</p>
-   <p><a class="btn" href="/agendar">Agendar online</a></p>
-   <div class="store"><span><span data-i="arrow"></span><span><small>Em breve no</small>Google Play</span></span><span><span data-i="arrow"></span><span><small>Em breve na</small>App Store</span></span></div>
+   <p>Consulte os serviços, peça um orçamento e agende seu atendimento sem sair de casa. Instale no celular em poucos toques.</p>
+   <div class="store"><button class="btn" type="button" data-instalar>Instalar aplicativo</button><a class="btn ghost" href="/agendar">Usar no navegador</a></div>
+   <p id="instalarAjuda" role="status" hidden></p>
   </div>
   <div class="reveal">
    <div class="phone" role="img" aria-label="Tela ilustrativa do agendamento"><div class="scr">

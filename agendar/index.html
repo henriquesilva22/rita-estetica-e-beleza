@@ -3,38 +3,66 @@
 <head>
   <base href="/agendar/">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rita Beleza e Estética | Agende seu horário</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Agendar | Rita Beleza e Estética</title>
   <meta name="description" content="Agende seu horário ou peça um orçamento na Rita Beleza e Estética, em Itapira: cabelos, unhas, sobrancelhas e estética.">
-  <meta name="theme-color" content="#FFF9F7">
+  <meta name="theme-color" content="#fbf7f3">
 
-  <!-- Prévia ao compartilhar o link -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:title" content="Rita Beleza e Estética | Agende seu horário">
+  <meta property="og:title" content="Agendar | Rita Beleza e Estética">
   <meta property="og:description" content="Cabelos, unhas, sobrancelhas e estética em Itapira. Agende ou peça um orçamento.">
   <meta property="og:url" content="https://rita-estetica-e-beleza.vercel.app/agendar">
-  <meta property="og:image" content="https://rita-estetica-e-beleza.vercel.app/agendar/icons/Icon-512.png">
+  <meta property="og:image" content="https://rita-estetica-e-beleza.vercel.app/img/cabelo-02.jpg">
 
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Rita Beleza">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="manifest" href="manifest.json">
-
+  <link rel="apple-touch-icon" href="/agendar/icons/Icon-192.png">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Visual e menu são os mesmos arquivos do site -->
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script defer src="/assets/topo.js"></script>
   <style>
-    body { margin: 0; background: #FFF9F7; }
-    #loading { position: fixed; inset: 0; display: grid; place-content: center; gap: 14px;
-      justify-items: center; font-family: Arial, sans-serif; color: #74595f; }
-    #loading strong { color: #9c4a5e; font-size: 24px; }
+    html, body { height: 100%; overflow: hidden; }
+    body { display: flex; flex-direction: column; height: 100dvh; padding: 0; }
+    .header { position: relative; flex: none; }
+    #agendamento { position: relative; flex: 1; min-height: 0; }
+    #loading { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; color: var(--ink-soft); }
+    #loading b { font: 500 italic 34px/1 var(--display); color: var(--accent); }
+    /* Instalado na tela inicial: só o app, sem o menu do site */
+    @media (display-mode: standalone) { .header, .drawer { display: none; } }
   </style>
 </head>
 <body>
-  <div id="loading" role="status"><strong>Rita Beleza e Estética</strong><span>Carregando...</span></div>
-  <noscript>Ative o JavaScript para agendar, ou fale pelo WhatsApp (19) 99166-8269.</noscript>
-  <script>
-    addEventListener('flutter-first-frame', () => document.getElementById('loading')?.remove());
-  </script>
-  <script src="flutter_bootstrap.js" async></script>
+<header class="header">
+ <div class="wrap bar">
+  <a class="logo" href="/" aria-label="Rita Beleza e Estética, início"><img src="/logos/logo.png" alt="Rita Beleza e Estética" width="420" height="161"></a>
+  <nav class="nav" aria-label="Principal">
+   <a href="/#servicos">Serviços</a><a href="/#precos">Valores</a><a href="/#galeria">Galeria</a><a href="/#sobre">Sobre</a><a href="/#contato">Contato</a>
+  </nav>
+  <div class="bar-actions">
+   <a class="entrar" href="/">Voltar ao site</a>
+   <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="drawer"></button>
+  </div>
+ </div>
+</header>
+<div class="drawer" id="drawer">
+ <nav aria-label="Menu">
+  <a href="/">Início</a>
+  <a href="/#servicos">Serviços</a>
+  <a href="/#precos">Valores</a>
+  <a href="/#galeria">Galeria</a>
+  <a href="/#sobre">Sobre</a>
+  <a href="/#contato">Contato</a>
+ </nav>
+</div>
+<main id="agendamento">
+ <div id="loading" role="status"><b>Agendamento</b><p>Carregando...</p></div>
+ <noscript>Ative o JavaScript para agendar, ou fale pelo WhatsApp (19) 99166-8269.</noscript>
+</main>
+<script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

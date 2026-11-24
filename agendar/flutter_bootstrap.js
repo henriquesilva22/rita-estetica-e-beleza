@@ -35,8 +35,13 @@ if (!window._flutter) {
 }
 _flutter.buildConfig = {"engineRevision":"5a2a6a42cce67f965cf540fcecf616faca624aa1","builds":[{"compileTarget":"dart2js","renderer":"canvaskit","mainJsPath":"main.dart.js"},{}]};
 
+
+// O agendamento roda dentro da página, abaixo do menu do site.
 _flutter.loader.load({
-  serviceWorkerSettings: {
-    serviceWorkerVersion: "991278754" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */
-  }
+  onEntrypointLoaded: async (engineInitializer) => {
+    const host = document.getElementById('agendamento');
+    const runner = await engineInitializer.initializeEngine({ hostElement: host });
+    document.getElementById('loading')?.remove();
+    await runner.runApp();
+  },
 });

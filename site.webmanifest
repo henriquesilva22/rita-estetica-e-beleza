@@ -1,9 +1,30 @@
 {
   "name": "Rita Beleza e Estética",
   "short_name": "Rita Beleza",
-  "start_url": "/",
+  "start_url": "/agendar",
   "display": "standalone",
   "background_color": "#fbf7f3",
   "theme_color": "#9c4a5e",
-  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }, { "src": "/logos/logo.png", "sizes": "420x161", "type": "image/png" }]
+  "icons": [
+    {
+      "src": "/agendar/icons/Icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/agendar/icons/Icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/agendar/icons/Icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "id": "/agendar",
+  "scope": "/",
+  "lang": "pt-BR",
+  "description": "Agende seu horário ou peça um orçamento na Rita Beleza e Estética."
 }

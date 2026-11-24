@@ -41,6 +41,10 @@
       items: [['Limpeza de pele', 'R$ 100,00'], ['Depilação', 'a partir de R$ 20,00'], ['Maquiagem', 'R$ 150,00']] }
   ];
 
+  // serviço do catálogo -> código dele no agendamento
+  var AGENDA = {"Corte": "corte", "Tintura": "tintura", "Luzes": "luzes", "Progressiva": "progressiva", "Botox capilar": "botox", "Hidratação com queratina": "hidrat", "Pé e mão": "unhas", "Design com henna": "henna", "Remoção simples": "remocao", "Sobrancelha definitiva": "definitiva", "Limpeza de pele": "limpeza", "Depilação": "depil", "Maquiagem": "maq"};
+  function agendar(nome) { return '/agendar' + (AGENDA[nome] ? '?servico=' + AGENDA[nome] : ''); }
+
   var FATORES = [
     ['Comprimento', 'Curto, médio, longo ou muito longo.'],
     ['Volume', 'Pouco, médio ou muito.'],
@@ -140,10 +144,10 @@
       return '<article class="card reveal"><figure><img src="' + c.img + '" alt="" width="800" height="600" loading="lazy" decoding="async"></figure>' +
         '<div class="b"><h3>' + c.nome + '</h3><p>' + c.desc + '</p><ul class="tags">' +
         c.items.map(function (i) {
-          return '<li>' + (i[2] ? '<a target="_blank" rel="noopener" href="' + wa(i[2]) + '" aria-label="Agendar ' + i[0] + ' pelo WhatsApp">' + icon('wa') + i[0] + '</a>' : i[0]) + '</li>';
+          return '<li><a href="' + agendar(i[0]) + '" aria-label="Agendar ' + i[0] + '">' + i[0] + '</a></li>';
         }).join('') + '</ul>' +
         '<div class="from"><a class="link" href="#precos">Ver valores</a>' +
-        '<a class="btn ghost" target="_blank" rel="noopener" href="' + wa(c.msg) + '">Agendar</a></div></div></article>';
+        '<a class="btn ghost" href="/agendar?categoria=' + c.id + '">Agendar</a></div></div></article>';
     }).join('');
     var dots = $('#dots');
     dots.innerHTML = CATS.map(function (c, k) { return '<button type="button" aria-label="Ver ' + c.nome + '" data-k="' + k + '"></button>'; }).join('');
@@ -166,10 +170,10 @@
     panels.innerHTML = CATS.map(function (c, k) {
       return '<div class="price reveal" role="tabpanel" id="p-' + c.id + '" aria-labelledby="t-' + c.id + '"' + (k ? ' hidden' : '') + '><h3>' + c.nome + '</h3><ul>' +
         c.items.map(function (i) {
-          return '<li><span>' + i[0] + '</span><i></i><b>' + i[1] + '</b>' +
+          return '<li><span><a class="serv" href="' + agendar(i[0]) + '">' + i[0] + '</a></span><i></i><b>' + i[1] + '</b>' +
             (i[2] ? '<a class="wa-item" target="_blank" rel="noopener" href="' + wa(i[2]) + '" aria-label="Agendar ' + i[0] + ' pelo WhatsApp">' + icon('wa') + '</a>' : '') + '</li>';
         }).join('') +
-        '</ul><a class="btn ghost sm" target="_blank" rel="noopener" href="' + wa(c.msg) + '">' + icon('wa') + 'Agendar ' + c.nome.split(' ')[0].toLowerCase() + '</a></div>';
+        '</ul><a class="btn ghost sm" href="/agendar?categoria=' + c.id + '">Agendar ' + c.nome.split(' ')[0].toLowerCase() + '</a></div>';
     }).join('');
     tabs.addEventListener('click', function (e) {
       var b = e.target.closest('[role=tab]'); if (!b) return;
