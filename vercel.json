@@ -1,6 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": true,
+  "cleanUrls": false,
+  "rewrites": [
+    { "source": "/agendar", "destination": "/agendar/index.html" },
+    { "source": "/conta", "destination": "/conta.html" }
+  ],
   "trailingSlash": false,
   "headers": [
     {

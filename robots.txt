@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /conta
+
+Sitemap: https://rita-estetica-e-beleza.vercel.app/sitemap.xml
