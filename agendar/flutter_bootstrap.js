@@ -36,12 +36,15 @@ if (!window._flutter) {
 _flutter.buildConfig = {"engineRevision":"5a2a6a42cce67f965cf540fcecf616faca624aa1","builds":[{"compileTarget":"dart2js","renderer":"canvaskit","mainJsPath":"main.dart.js"},{}]};
 
 
-// O agendamento roda dentro da página, abaixo do menu do site.
+// No site, o agendamento roda abaixo do menu. No aplicativo, ocupa a tela toda:
+// é o modo em que o Flutter acompanha as barras do celular e o teclado.
 _flutter.loader.load({
   onEntrypointLoaded: async (engineInitializer) => {
+    const app = document.documentElement.classList.contains('modo-app');
     const host = document.getElementById('agendamento');
-    const runner = await engineInitializer.initializeEngine({ hostElement: host });
+    const runner = await engineInitializer.initializeEngine(app ? {} : { hostElement: host });
     document.getElementById('loading')?.remove();
+    if (app) host.remove();
     await runner.runApp();
   },
 });
