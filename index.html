@@ -25,11 +25,11 @@ if (navigator.standalone === true || ['standalone', 'fullscreen', 'minimal-ui'].
 <link rel="preload" as="image" href="img/cabelo-02.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=5">
+<link rel="stylesheet" href="assets/styles.css?v=7">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BeautySalon","name":"Rita Beleza e Estética","image":"/img/cabelo-02.jpg","telephone":["+5519991668269","+5519999988530"],"priceRange":"R$ 20 - R$ 200","sameAs":["https://www.facebook.com/p/Rita-Beleza-Est%C3%A9tica-100029109558790/"],"address":{"@type":"PostalAddress","streetAddress":"Avenida Rio Branco, 631","addressLocality":"Itapira","addressRegion":"SP","addressCountry":"BR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"18:00"}]}</script>
-<script defer src="assets/app.js?v=5"></script>
-<script defer src="/assets/topo.js?v=5"></script>
-<script defer src="/assets/push.js?v=5"></script>
+<script defer src="assets/app.js?v=7"></script>
+<script defer src="/assets/topo.js?v=7"></script>
+<script defer src="/assets/push.js?v=7"></script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -38,9 +38,10 @@ if (navigator.standalone === true || ['standalone', 'fullscreen', 'minimal-ui'].
  <div class="wrap bar">
   <a class="logo" href="#inicio" aria-label="Rita Beleza e Estética, início"><img src="logos/logo.png" alt="Rita Beleza e Estética" width="420" height="161"></a>
   <nav class="nav" aria-label="Principal">
-   <a href="#servicos">Serviços</a><a href="#precos">Valores</a><a href="#galeria">Galeria</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
+   <a href="#servicos">Serviços</a><a href="#precos">Valores</a><a href="#galeria">Galeria</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a><a class="topo-wa" data-wa="Olá! Vim pelo site e gostaria de mais informações." aria-label="Conversar no WhatsApp" title="WhatsApp" data-i="wa"></a>
   </nav>
   <div class="bar-actions">
+   <a class="topo-wa so-celular" data-wa="Olá! Vim pelo site e gostaria de mais informações." aria-label="Conversar no WhatsApp" title="WhatsApp" data-i="wa"></a>
    <a class="btn ghost sm sempre" data-conta href="/agendar?entrar=1">Entrar</a>
    <a class="btn sm" href="/agendar">Agendar</a>
    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="drawer"></button>
@@ -75,12 +76,11 @@ if (navigator.standalone === true || ['standalone', 'fullscreen', 'minimal-ui'].
      <h1>Sua beleza, cuidada com <em>delicadeza</em></h1>
      <p class="sub">Cabelo, unhas, sobrancelhas, estética e maquiagem em um só lugar, com atendimento individual e preço claro.</p>
      <div class="cta">
-      <button class="btn so-celular" type="button" data-instalar data-i="baixar"> Instalar o aplicativo</button>
-      <a class="btn principal" href="/agendar">Agendar online</a>
-      <a class="btn ghost" href="#precos">Ver valores</a>
+      <a class="btn" href="/agendar">Agendar online</a>
+      <button class="btn baixar" type="button" data-instalar data-i="baixar"> Baixe nosso aplicativo</button>
+      <a class="btn ghost valores" href="#precos">Ver valores</a>
      </div>
      <p class="instalar-ajuda" id="instalarAjuda" role="status" hidden></p>
-     <p class="hero-wa"><a data-wa="Olá! Vim pelo site e gostaria de agendar um horário." data-i="wa"> Prefere o WhatsApp? Fale com a Rita</a></p>
      <div class="facts">
       <div><b>4</b><span>Áreas de cuidado</span></div>
       <div><b>Ter–Sáb</b><span>09h às 18h</span></div>
@@ -166,8 +166,8 @@ if (navigator.standalone === true || ['standalone', 'fullscreen', 'minimal-ui'].
  <!-- APP -->
  <section class="app"><div class="wrap in">
   <div class="reveal"><div class="eyebrow">Agendamento online</div><h2>Seu salão favorito na palma da mão</h2>
-   <p>Consulte os serviços, peça um orçamento e agende seu atendimento sem sair de casa. Instale no celular em poucos toques.</p>
-   <div class="store"><button class="btn" type="button" data-instalar>Instalar aplicativo</button><a class="btn ghost" href="/agendar">Usar no navegador</a></div>
+   <p>Consulte os serviços, peça um orçamento e agende seu atendimento sem sair de casa. Baixe no celular em poucos toques.</p>
+   <div class="store"><button class="btn" type="button" data-instalar>Baixar o aplicativo</button><a class="btn ghost" href="/agendar">Usar no navegador</a></div>
    <p class="instalar-ajuda" role="status" hidden></p>
   </div>
   <div class="reveal">
@@ -209,7 +209,7 @@ if (navigator.standalone === true || ['standalone', 'fullscreen', 'minimal-ui'].
  </div>
 </footer>
 
-<div class="dock"><a class="w" href="/agendar">Agendar pelo navegador</a><button class="t" type="button" data-instalar aria-label="Instalar o aplicativo" data-i="baixar"></button><a class="t wa" data-wa="Olá! Vim pelo site e gostaria de agendar um horário." aria-label="Agendar pelo WhatsApp" data-i="wa"></a></div>
+<div class="dock"><a class="w" href="/agendar">Agendar pelo navegador</a><button class="t" type="button" data-instalar aria-label="Baixar o aplicativo" data-i="baixar"></button></div>
 <aside class="convite" id="convite" role="dialog" aria-label="Permitir notificações" hidden><b>Receba avisos da Rita</b><p>Saiba na hora quando seu orçamento ou horário for respondido.</p><div><button class="btn sm" type="button" data-sim>Permitir notificações</button><button class="btn ghost sm" type="button" data-nao>Agora não</button></div></aside>
 <button class="to-top" aria-label="Voltar ao topo" data-i="up"></button>
 </body>

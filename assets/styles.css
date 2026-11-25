@@ -347,14 +347,19 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 /* ---------- celular: aplicativo em primeiro lugar ---------- */
 .dock .w{background:var(--accent)}
 .dock .t{flex:none;padding:0;border-radius:50%;display:grid;place-items:center;height:52px;cursor:pointer}
-.dock .t.wa{background:var(--wa);border-color:var(--wa);color:#fff}
-.hero-wa{margin:18px 0 0;font-size:15px}.hero-wa a{display:inline-flex;align-items:center;gap:8px;color:var(--wa-dark);text-underline-offset:4px;min-height:44px}
 .instalar-ajuda{margin:16px auto 0;max-width:460px;padding:14px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:var(--ink);font-size:15px}
 .app .instalar-ajuda{opacity:1}
-@media(min-width:960px){.so-celular{display:none}}
-@media(max-width:959px){.hero .principal{background:transparent;color:var(--accent)}}
 .convite{position:fixed;z-index:70;left:14px;right:14px;bottom:calc(88px + env(safe-area-inset-bottom));max-width:420px;margin:0 auto;padding:20px;background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
 .convite[hidden]{display:none}
 .convite b{font:600 24px/1.1 var(--display)}.convite p{margin:6px 0 16px;color:var(--ink-soft);font-size:15px}
 .convite div{display:flex;gap:8px;flex-wrap:wrap}.convite .btn{flex:1 1 auto;padding:0 14px;letter-spacing:.06em}
 @media(min-width:960px){.convite{left:auto;right:28px;bottom:28px;margin:0}}
+
+/* ---------- topo: WhatsApp só como ícone; capa: baixar o aplicativo ---------- */
+.topo-wa{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--wa);color:#fff;font-size:20px;transition:background .25s,transform .25s var(--ease)}
+.topo-wa:hover{background:var(--wa-dark);transform:translateY(-2px)}
+.btn.baixar{background:var(--wine);border-color:var(--wine)}.btn.baixar:hover{background:#3a1823;border-color:#3a1823}
+@media(min-width:640px){.hero .cta{display:grid;grid-template-columns:auto auto;justify-content:center;gap:12px}.hero .cta .valores{grid-column:1}}
+@media(min-width:960px){.hero .cta{justify-content:start}.topo-wa.so-celular{display:none}}
+.nav{align-items:center}.nav .topo-wa{padding:0;color:#fff;letter-spacing:0;font-size:20px;width:40px;height:40px;margin-left:-8px}.nav .topo-wa:hover,.nav .topo-wa.active{color:#fff}.nav .topo-wa:after{display:none}
+@media(max-width:380px){.bar{gap:8px}.logo img{height:32px}}

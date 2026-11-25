@@ -74,7 +74,9 @@
         ? 'O aplicativo já está instalado neste aparelho.'
         : ios
           ? 'No Safari, toque em Compartilhar e depois em "Adicionar à Tela de Início".'
-          : 'No Chrome, abra o menu (três pontinhos) e toque em "Instalar app" ou "Adicionar à tela inicial".';
+          : /Android/.test(navigator.userAgent)
+            ? 'No Chrome, abra o menu (três pontinhos) e toque em "Instalar app" ou "Adicionar à tela inicial".'
+            : 'Abra este site no celular e toque em "Baixar o aplicativo". No computador, use o ícone de instalar na barra de endereço do Chrome.';
     });
   });
 })();
