@@ -48,35 +48,87 @@
     }).catch(function () {});
   }
 
-  /* ---------- instalar o aplicativo ---------- */
-  var installPrompt = null;
-  window.addEventListener('beforeinstallprompt', function (e) {
-    e.preventDefault();
-    installPrompt = e;
-  });
+  /* ---------- baixar o aplicativo ---------- */
+  var ua = navigator.userAgent;
+  var android = /Android/.test(ua);
+  var ios = /iPhone|iPad|iPod/.test(ua) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  // Navegador de dentro de outro app (Instagram, Facebook...): não instala nada
+  var inApp = /; wv\)|FBAN|FBAV|Instagram|Line\//.test(ua);
+  var APP = '/agendar?app=1';
+  var CHROME = ['Abrir no Chrome',
+    'intent://' + location.host + '/#Intent;scheme=https;package=com.android.chrome;end'];
+
+  function installed() {
+    if (!navigator.getInstalledRelatedApps) return Promise.resolve(false);
+    return navigator.getInstalledRelatedApps()
+      .then(function (list) { return list.length > 0; }).catch(function () { return false; });
+  }
+  // O aviso do Chrome pode demorar alguns segundos depois de abrir a página
+  function waitPrompt(ms) {
+    return new Promise(function (ok) {
+      var end = Date.now() + ms;
+      (function look() {
+        if (window.ritaInstalar || Date.now() > end) return ok(window.ritaInstalar || null);
+        setTimeout(look, 150);
+      })();
+    });
+  }
+  function explain(b, text, link) {
+    // a ajuda mais próxima do botão; o da barra usa a da capa
+    var section = b.closest('section');
+    var help = (section && section.querySelector('.instalar-ajuda')) || document.querySelector('.instalar-ajuda');
+    if (!help) return;
+    help.textContent = text;
+    if (link) {
+      var a = document.createElement('a');
+      a.className = 'btn sm';
+      a.href = link[1];
+      a.textContent = link[0];
+      help.appendChild(document.createElement('br'));
+      help.appendChild(a);
+    }
+    help.hidden = false;
+    if (!section) help.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  function help(b) {
+    if (inApp) {
+      return android
+        ? explain(b, 'Para baixar, abra este site no Chrome.', CHROME)
+        : explain(b, 'Para baixar, abra este site no Safari.');
+    }
+    if (ios) return explain(b, 'No Safari, toque em Compartilhar e depois em "Adicionar à Tela de Início".');
+    if (!android) {
+      return explain(b, 'Abra este site no celular e toque em "Baixe nosso aplicativo". No computador, use o ícone de instalar na barra de endereço do Chrome.');
+    }
+    if (!/Chrome\//.test(ua) || /OPR\//.test(ua)) {
+      return explain(b, 'Para baixar com um toque, abra este site no Chrome.', CHROME);
+    }
+    explain(b, 'O Chrome não liberou a instalação agora. Confira se não está em guia anônima e se o aplicativo Rita já não está no celular. Se preferir, abra o menu (três pontinhos) e toque em "Instalar app".',
+      ['Abrir o aplicativo', APP]);
+  }
+
+  window.addEventListener('appinstalled', function () { window.ritaInstalar = null; });
   document.querySelectorAll('[data-instalar]').forEach(function (b) {
     b.addEventListener('click', function () {
-      if (installPrompt) {
-        installPrompt.prompt();
-        installPrompt = null;
-        return;
+      function show(event) {
+        window.ritaInstalar = null; // cada aviso do Chrome só pode ser usado uma vez
+        return event.prompt();
       }
-      // a ajuda mais próxima do botão; o da barra usa a da capa
-      var section = b.closest('section');
-      var help = (section && section.querySelector('.instalar-ajuda')) || document.querySelector('.instalar-ajuda');
-      if (!help) return;
-      var ios = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
-        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-      var installed = matchMedia('(display-mode: standalone)').matches;
-      help.hidden = false;
-      if (!section) help.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      help.textContent = installed
-        ? 'O aplicativo já está instalado neste aparelho.'
-        : ios
-          ? 'No Safari, toque em Compartilhar e depois em "Adicionar à Tela de Início".'
-          : /Android/.test(navigator.userAgent)
-            ? 'No Chrome, abra o menu (três pontinhos) e toque em "Instalar app" ou "Adicionar à tela inicial".'
-            : 'Abra este site no celular e toque em "Baixar o aplicativo". No computador, use o ícone de instalar na barra de endereço do Chrome.';
+      if (window.ritaInstalar) { show(window.ritaInstalar); return; }
+      if (b.disabled) return;
+      b.disabled = true;
+      installed().then(function (yes) {
+        if (yes) return explain(b, 'O aplicativo já está neste celular.', ['Abrir o aplicativo', APP]);
+        return (inApp || ios ? Promise.resolve(null) : waitPrompt(3000)).then(function (event) {
+          if (!event) return help(b);
+          // Depois da espera, o Chrome pode exigir um toque novo
+          return Promise.resolve(show(event)).catch(function () {
+            window.ritaInstalar = event;
+            explain(b, 'Pronto para baixar. Toque no botão mais uma vez.');
+          });
+        });
+      }).then(function () { b.disabled = false; }, function () { b.disabled = false; });
     });
   });
 })();

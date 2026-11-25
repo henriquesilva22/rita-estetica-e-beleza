@@ -29,5 +29,12 @@
   "description": "Agende seu horário ou peça um orçamento na Rita Beleza e Estética.",
   "display_override": [
     "standalone"
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://rita-estetica-e-beleza.vercel.app/site.webmanifest"
+    }
   ]
 }

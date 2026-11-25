@@ -363,3 +363,5 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 @media(min-width:960px){.hero .cta{justify-content:start}.topo-wa.so-celular{display:none}}
 .nav{align-items:center}.nav .topo-wa{padding:0;color:#fff;letter-spacing:0;font-size:20px;width:40px;height:40px;margin-left:-8px}.nav .topo-wa:hover,.nav .topo-wa.active{color:#fff}.nav .topo-wa:after{display:none}
 @media(max-width:380px){.bar{gap:8px}.logo img{height:32px}}
+.instalar-ajuda .btn{margin-top:12px;min-height:44px}
+[data-instalar]:disabled{opacity:.7}
